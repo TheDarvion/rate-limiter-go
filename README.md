@@ -31,4 +31,27 @@ Rate Limiter — это middleware для HTTP API, написанное на Go
 2. Добавить поддержку лимитов по IP и по пользователю  
 3. Интегрировать Redis для хранения состояния запросов  
 4. Добавить unit-тесты и документацию  
-5. В будущем: добавить поддержку различных стратегий ограничения (fixed window, sliding window)  
+5. В будущем: добавить поддержку различных стратегий ограничения (fixed window, sliding window)
+
+---
+
+## Пример использования (планируемый)
+```go
+package main
+
+import (
+    "net/http"
+    "time"
+    "github.com/TheDarvion/rate-limiter-go/limiter"
+)
+
+func main() {
+    // 10 запросов в минуту
+    rl := limiter.NewRateLimiter(10, 1*time.Minute)
+
+    http.Handle("/", rl.Middleware(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+        w.Write([]byte("Hello, world!"))
+    })))
+
+    http.ListenAndServe(":8080", nil)
+}
