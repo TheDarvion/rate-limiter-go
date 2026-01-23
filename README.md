@@ -3,6 +3,10 @@
 ![Status](https://img.shields.io/badge/status-In%20Progress-orange)  
 ![Language](https://img.shields.io/badge/language-Go-blue)
 
+---
+## Проект в активной разработке, план завершения первой версии: 15 февраля 2026
+---
+
 ## Описание
 Rate Limiter — это middleware для HTTP API, написанное на Go, которое ограничивает количество запросов от одного клиента за определённый промежуток времени.  
 Цель проекта — изучить работу с **concurrency**, **middleware** и инфраструктурными сервисами в Go.
